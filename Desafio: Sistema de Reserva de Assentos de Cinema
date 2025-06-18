@@ -1,0 +1,48 @@
+lista_filmes = []
+
+def adicionar_filme(titulo, descrição, genero, duração, classificação):
+  filme = {"titulo": titulo, "descrição": descrição, "genero": genero, "duração": duração, "classificação": classificação}
+  lista_filmes.append(filme)
+  print(f"Filme '{titulo}' adicionado com sucesso!")
+
+def editar_filme(titulo_antigo, titulo_novo, descrição_novo, genero_novo, duração_novo, classificação_novo):
+  for filme in lista_filmes:
+    if filme["titulo"] == titulo_antigo:
+      filme["titulo"] = titulo_novo
+      filme["duração"] = descrição_novo
+      filme["genero"] = genero_novo
+      filme["duração"] = duração_novo
+      filme["classificação"] = classificação_novo
+      print(f"Filme '{titulo_antigo}' editado para '{titulo_novo}' com sucesso!")
+      return
+  print(f"Filme '{titulo_antigo}' não encontrado para edição.")
+
+def remover_filme(titulo):
+  try:
+    lista_filmes.remove(next(filme for filme in lista_filmes if filme["titulo"] == titulo))
+    print(f"Filme '{titulo}' removido com sucesso!")
+  except ValueError:
+    print(f"Filme '{titulo}' não encontrado para remoção.")
+
+def listar_filmes():
+  if lista_filmes:
+    print("Lista de Filmes:")
+    for filme in lista_filmes:
+      print(f"- {filme['titulo']} ({filme['descrição']}, {filme['genero']}, {filme['duração']}, {filme['classificação']})")
+  else:
+    print("A lista de filmes está vazia.")
+
+adicionar_filme("O Senhor dos Anéis: A Sociedade do Anel", "conta a história de Frodo Bolseiro, um hobbit que herda do seu tio Bilbo um anel mágico. Gandalf, o mago, descobre que este anel é o Um Anel, criado por Sauron, o Senhor do Escuro, e que é necessário destruí-lo para impedir o domínio maligno do Senhor do Escuro" 
+, "Fantasia", "2h 58min", "12")
+adicionar_filme("Missão impossível 8", "Ethan Hunt (Tom Cruise) e a sua equipe da IMF enfrentam uma nova ameaça: uma inteligência artificial descontrolada conhecida como The Entity. A sua missão é encontrar e destruir a entidade, que está a planear um ataque global que poderia destruir a humanidade", "Ação", "2h 50min", "14")
+adicionar_filme("Vingadores: Ultimato", " conta a história dos heróis sobreviventes que tentam reverter os efeitos do estalo de Thanos em Vingadores: Guerra Infinita, que eliminou metade da população do universo", "Ficção Científica", "3h 1min", "12")
+
+listar_filmes()
+
+editar_filme("O Senhor dos Anéis: A Sociedade do Anel", "O Senhor dos Anéis: A Sociedade do Anel - Versão Estendida", 2002, "Fantasia", "3h 28min", "12")
+
+listar_filmes()
+
+remover_filme("Missão impossível 8")
+
+listar_filmes()
